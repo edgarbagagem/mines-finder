@@ -20,6 +20,9 @@ public class MinesFinder extends JFrame {
     private JButton buttonMedio;
     private JButton buttonFacil;
     private JButton buttonDificil;
+    private JLabel lblTempoFacil;
+    private JLabel lblTempoMedio;
+    private JLabel lblTempoDificil;
 
     private TabelaRecordes recordesFacil;
     private TabelaRecordes recordesMedio;
@@ -32,6 +35,25 @@ public class MinesFinder extends JFrame {
         recordesMedio = new TabelaRecordes();
         recordesDificil = new TabelaRecordes();
 
+        recordesFacil.addTabelaRecordesListener(new TabelaRecordesListener() {
+            @Override
+            public void recordesActualizados(TabelaRecordes recordes) {
+                recordesFacilActualizado(recordes);
+            }
+        });
+        recordesMedio.addTabelaRecordesListener(new TabelaRecordesListener() {
+            @Override
+            public void recordesActualizados(TabelaRecordes recordes) {
+                recordesMedioActualizado(recordes);
+            }
+        });
+        recordesDificil.addTabelaRecordesListener(new TabelaRecordesListener() {
+            @Override
+            public void recordesActualizados(TabelaRecordes recordes) {
+                recordesDificilActualizado(recordes);
+            }
+        });
+
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setContentPane(painelPrincipal);
         pack();
@@ -39,6 +61,21 @@ public class MinesFinder extends JFrame {
         buttonFacil.addActionListener(this::buttonFacilActionPerformed);
         buttonMedio.addActionListener(this::buttonMedioActionPerformed);
         buttonDificil.addActionListener(this::buttonDificilActionPerformed);
+    }
+
+    private void recordesDificilActualizado(TabelaRecordes recordes) {
+        lblJogadorDificil.setText(recordes.getNome());
+        lblTempoDificil.setText(Long.toString(recordes.getTempoDeJogo()));
+    }
+
+    private void recordesMedioActualizado(TabelaRecordes recordes) {
+        lblJogadorMedio.setText(recordes.getNome());
+        lblTempoMedio.setText(Long.toString(recordes.getTempoDeJogo()));
+    }
+
+    private void recordesFacilActualizado(TabelaRecordes recordes) {
+        lblJogadorFacil.setText(recordes.getNome());
+        lblTempoFacil.setText(Long.toString(recordes.getTempoDeJogo()));
     }
 
     private void buttonDificilActionPerformed(ActionEvent e) {
