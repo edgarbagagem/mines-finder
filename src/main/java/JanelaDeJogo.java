@@ -6,16 +6,18 @@ public class JanelaDeJogo extends JFrame {
     private JPanel painelJogo;
     private BotaoCampoMinado[][] botoes;
     private CampoMinado campoMinado;
+    private TabelaRecordes recordes;
 
-    public JanelaDeJogo(CampoMinado campoMinado){
+    public JanelaDeJogo(CampoMinado campoMinado, TabelaRecordes recordes) {
         this.campoMinado = campoMinado;
+        this.recordes = recordes;
 
         var largura = campoMinado.getLargura();
         var altura = campoMinado.getAltura();
 
         this.botoes = new BotaoCampoMinado[largura][altura];
 
-        painelJogo.setLayout(new GridLayout(altura,largura));
+        painelJogo.setLayout(new GridLayout(altura, largura));
 
         // Criar e adicionar os botões à janela
         for (int coluna = 0; coluna < altura; ++coluna) {
@@ -40,18 +42,25 @@ public class JanelaDeJogo extends JFrame {
         int x = botao.getLinha();
         int y = botao.getColuna();
 
-        campoMinado.revelarQuadricula(x,y);
+        campoMinado.revelarQuadricula(x, y);
         actualizarEstadoBotoes();
 
         if (campoMinado.isJogoTerminado()) {
-            if (campoMinado.isJogadorDerrotado())
+            if (campoMinado.isJogadorDerrotado()) {
                 JOptionPane.showMessageDialog(null, "Oh, rebentou uma mina",
                         "Perdeu!", JOptionPane.INFORMATION_MESSAGE);
-            else
-                JOptionPane.showMessageDialog(null, "Parabéns. Conseguiu descobrir todas as minas em "+
-            (campoMinado.getDuracaoJogo()/1000)+" segundos",
-                    "Vitória", JOptionPane.INFORMATION_MESSAGE);
-            setVisible(false);
+            } else {
+                JOptionPane.showMessageDialog(null, "Parabéns. Conseguiu descobrir todas as minas em " +
+                                (campoMinado.getDuracaoJogo() / 1000) + " segundos",
+                        "Vitória", JOptionPane.INFORMATION_MESSAGE);
+                setVisible(false);
+
+                boolean novoRecorde=campoMinado.getDuracaoJogo()<recordes.getTempoDeJogo();
+                if (novoRecorde) {
+                    String nome=JOptionPane.showInputDialog("Introduza o seu nome");
+                    recordes.setRecorde(nome, campoMinado.getDuracaoJogo());
+                }
+            }
         }
 
     }
@@ -64,10 +73,11 @@ public class JanelaDeJogo extends JFrame {
         }
     }
 
-    MouseListener mouseListener=new MouseListener() {
+    MouseListener mouseListener = new MouseListener() {
         @Override
         public void mouseClicked(MouseEvent e) {
         }
+
         @Override
         public void mousePressed(MouseEvent e) {
             if (e.getButton() != MouseEvent.BUTTON3) {
@@ -78,15 +88,18 @@ public class JanelaDeJogo extends JFrame {
             var y = botao.getColuna();
 
             var estadoQuadricula = campoMinado.getEstadoQuadricula(x, y);
-            marcarQuadricula(x,y);
+            marcarQuadricula(x, y);
             actualizarEstadoBotoes();
         }
+
         @Override
         public void mouseReleased(MouseEvent e) {
         }
+
         @Override
         public void mouseEntered(MouseEvent e) {
         }
+
         @Override
         public void mouseExited(MouseEvent e) {
         }
@@ -96,6 +109,7 @@ public class JanelaDeJogo extends JFrame {
         @Override
         public void keyTyped(KeyEvent e) {
         }
+
         @Override
         public void keyPressed(KeyEvent e) {
             var botao = (BotaoCampoMinado) e.getSource();
@@ -116,6 +130,7 @@ public class JanelaDeJogo extends JFrame {
                 }
             }
         }
+
         @Override
         public void keyReleased(KeyEvent e) {
         }
@@ -123,12 +138,9 @@ public class JanelaDeJogo extends JFrame {
 
     private void marcarQuadricula(int linha, int coluna) {
         switch (campoMinado.getEstadoQuadricula(linha, coluna)) {
-            case CampoMinado.TAPADO ->
-                    campoMinado.marcarComoTendoMina(linha, coluna);
-            case CampoMinado.MARCADO ->
-                    campoMinado.marcarComoSuspeita(linha, coluna);
-            case CampoMinado.DUVIDA ->
-                    campoMinado.desmarcarQuadricula(linha, coluna);
+            case CampoMinado.TAPADO -> campoMinado.marcarComoTendoMina(linha, coluna);
+            case CampoMinado.MARCADO -> campoMinado.marcarComoSuspeita(linha, coluna);
+            case CampoMinado.DUVIDA -> campoMinado.desmarcarQuadricula(linha, coluna);
         }
     }
 }

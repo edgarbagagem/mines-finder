@@ -21,8 +21,16 @@ public class MinesFinder extends JFrame {
     private JButton buttonFacil;
     private JButton buttonDificil;
 
+    private TabelaRecordes recordesFacil;
+    private TabelaRecordes recordesMedio;
+    private TabelaRecordes recordesDificil;
+
     public MinesFinder(String title) {
         super(title);
+
+        recordesFacil = new TabelaRecordes();
+        recordesMedio = new TabelaRecordes();
+        recordesDificil = new TabelaRecordes();
 
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setContentPane(painelPrincipal);
@@ -34,17 +42,17 @@ public class MinesFinder extends JFrame {
     }
 
     private void buttonDificilActionPerformed(ActionEvent e) {
-        var janela = new JanelaDeJogo(new CampoMinado(16,40,90));
+        var janela = new JanelaDeJogo(new CampoMinado(16,40,90), recordesDificil);
         janela.setVisible(true);
     }
 
     private void buttonMedioActionPerformed(ActionEvent e) {
-        var janela = new JanelaDeJogo(new CampoMinado(16,16,40));
+        var janela = new JanelaDeJogo(new CampoMinado(16,16,40), recordesMedio);
         janela.setVisible(true);
     }
 
     private void buttonFacilActionPerformed(ActionEvent e) {
-        var janela = new JanelaDeJogo(new CampoMinado(9,9,10));
+        var janela = new JanelaDeJogo(new CampoMinado(9,9,10), recordesFacil);
         janela.setVisible(true);
     }
 
