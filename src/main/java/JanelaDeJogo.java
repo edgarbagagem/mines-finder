@@ -59,6 +59,7 @@ public class JanelaDeJogo extends JFrame {
                 if (novoRecorde) {
                     String nome=JOptionPane.showInputDialog("Introduza o seu nome");
                     recordes.setRecorde(nome, campoMinado.getDuracaoJogo());
+
                 }
             }
         }
