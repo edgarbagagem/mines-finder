@@ -27,12 +27,27 @@ public class MinesFinder extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setContentPane(painelPrincipal);
         pack();
-        buttonSair.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.exit(0);
-            }
-        });
+        buttonSair.addActionListener(this::buttonSairActionPerformed);
+        buttonFacil.addActionListener(this::buttonFacilActionPerformed);
+        buttonMedio.addActionListener(this::buttonMedioActionPerformed);
+        buttonDificil.addActionListener(this::buttonDificilActionPerformed);
+    }
+
+    private void buttonDificilActionPerformed(ActionEvent e) {
+        // TODO
+    }
+
+    private void buttonMedioActionPerformed(ActionEvent e) {
+        // TODO
+    }
+
+    private void buttonFacilActionPerformed(ActionEvent e) {
+        var janela = new JanelaDeJogo();
+        janela.setVisible(true);
+    }
+
+    private void buttonSairActionPerformed(ActionEvent e) {
+        System.exit(0);
     }
 
     public static void main(String[] args) {
