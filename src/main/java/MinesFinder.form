@@ -79,10 +79,13 @@
           </component>
           <component id="3e46a" class="javax.swing.JLabel" binding="lblJogadorMedio">
             <constraints>
-              <grid row="4" column="0" row-span="1" col-span="2" vsize-policy="1" hsize-policy="2" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="4" column="0" row-span="1" col-span="2" vsize-policy="1" hsize-policy="1" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="95" height="16"/>
+              </grid>
             </constraints>
             <properties>
               <font size="9"/>
+              <requestFocusEnabled value="true"/>
               <text value=""/>
             </properties>
           </component>
@@ -96,16 +99,17 @@
           </component>
           <component id="33e6c" class="javax.swing.JLabel" binding="lblJogadorDificil">
             <constraints>
-              <grid row="6" column="0" row-span="1" col-span="3" vsize-policy="2" hsize-policy="2" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="6" column="0" row-span="1" col-span="3" vsize-policy="1" hsize-policy="1" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <font size="9"/>
+              <horizontalAlignment value="2"/>
               <text value=""/>
             </properties>
           </component>
           <component id="16c0b" class="javax.swing.JLabel" binding="lblTempoFacil">
             <constraints>
-              <grid row="2" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="2" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <text value=""/>
@@ -113,7 +117,7 @@
           </component>
           <component id="48d0d" class="javax.swing.JLabel" binding="lblTempoMedio">
             <constraints>
-              <grid row="4" column="2" row-span="1" col-span="2" vsize-policy="0" hsize-policy="1" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="4" column="2" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <text value=""/>
@@ -121,7 +125,7 @@
           </component>
           <component id="ac7ca" class="javax.swing.JLabel" binding="lblTempoDificil">
             <constraints>
-              <grid row="6" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="6" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <text value=""/>
@@ -148,6 +152,7 @@
               <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
+              <icon value="images/minas_medio.png"/>
               <text value="Jogo Médio"/>
             </properties>
           </component>
@@ -156,6 +161,7 @@
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
+              <icon value="images/minas_facil.png"/>
               <text value="Jogo Fácil"/>
             </properties>
           </component>
@@ -164,6 +170,7 @@
               <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
+              <icon value="images/minas_dificil.png"/>
               <text value="Jogo Difícil"/>
             </properties>
           </component>
