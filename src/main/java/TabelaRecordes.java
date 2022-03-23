@@ -33,7 +33,7 @@ public class TabelaRecordes implements Serializable {
 
     public void setRecorde(String nome, long tempoDeJogo) {
         this.nome = nome;
-        this.tempoDeJogo = tempoDeJogo;
+        this.tempoDeJogo = tempoDeJogo/1000;
         notifyRecordesActualizados();
     }
 
